@@ -1,75 +1,72 @@
 #include "lists.h"
-#include <stdio.h>
-#include <stdlib.h>
-
 
 /**
- *reverse_listint- reverses a listint_t
- *@head: the head of the list to be reversed
- *Return: a pointer to new head (tail)
+ * reverse_listint - reverses a linked list
+ * @head: pointer to the first node in the list
+ *
+ * Return: pointer to the first node in the new list
  */
-
-listint_t *reverse_listint(listint_t **head)
+void reverse_listint(listint_t **head)
 {
-	listint_t *next = NULL;
 	listint_t *prev = NULL;
+	listint_t *current = *head;
+	listint_t *next = NULL;
 
-	while (*head)
+	while (current)
 	{
-		next = (*head)->next;
-
-		(*head)->next = prev;
-
-		prev = *head;
-		*head = next;
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
 	}
-	*head = prev;
 
-	return (*head);
+	*head = prev;
 }
 
-
-
 /**
- *is_palindrome - checks to see if a listint_t is a palendrome
- *@head: head of the listint_t
- *Return: 0 if is not pal 1 if is
+ * is_palindrome - checks if a linked list is a palindrome
+ * @head: double pointer to the linked list
+ *
+ * Return: 1 if it is, 0 if not
  */
-
 int is_palindrome(listint_t **head)
 {
-	int i;
-	listint_t *back = *head;
-	listint_t *begin = *head;
+	listint_t *slow = *head, *fast = *head, *temp = *head, *dup = NULL;
 
-	if (*head == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-	for (i = 0; 1; i++)
+
+	while (1)
 	{
-		if (back->next == NULL)
+		fast = fast->next->next;
+		if (!fast)
 		{
-			i = 1;
+			dup = slow->next;
 			break;
 		}
-		if (back->next->next == NULL)
+		if (!fast->next)
 		{
-			i = 2;
+			dup = slow->next->next;
 			break;
 		}
-		begin = begin->next;
-		back = back->next->next;
+		slow = slow->next;
 	}
-	back = begin->next;
-	begin->next = NULL;
-	*head = reverse_listint(head);
-	if (i % 2 == 1)
-		*head = (*head)->next;
-	while (back != NULL && *head != NULL)
+
+	reverse_listint(&dup);
+
+	while (dup && temp)
 	{
-		if (back->n != (*head)->n)
+		if (temp->n == dup->n)
+		{
+			dup = dup->next;
+			temp = temp->next;
+		}
+		else
 			return (0);
-		back = back->next;
-		*head = (*head)->next;
 	}
-	return (1);
+
+	if (!dup)
+		return (1);
+
+	return (0);
 }
