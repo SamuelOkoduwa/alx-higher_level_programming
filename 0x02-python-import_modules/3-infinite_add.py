@@ -1,9 +1,6 @@
 #!/usr/bin/python3
-if __name__ == "__main__":
-    from sys import argv
-
-    sum = 0
-    for arg in argv[1:]:
-        sum += int(arg)
-
-    print(sum)
+def print_reversed_list_integer(my_list=[]):
+    if my_list:
+        my_list.reverse()
+        for i in range(len(my_list)):
+            print("{:d}".format(my_list[i]))
