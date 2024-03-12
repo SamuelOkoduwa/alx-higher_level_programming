@@ -5,5 +5,4 @@ def remove_char_at(str, n):
         return str
     else:
         return str[:n] + str[n+1:]
-    
-# print(remove_char_at("Best School", 3))
+   
