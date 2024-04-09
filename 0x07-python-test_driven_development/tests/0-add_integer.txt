@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+
+"""
+This module contains tests for the add_integer function.
+"""
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/0-add_integer.txt")
