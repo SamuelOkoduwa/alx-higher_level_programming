@@ -1,0 +1,1 @@
+From my little research, Before the execution of line 2 (print("Love")), several small integer objects have been created and are still in memory. In CPython, small integers in the range [-5, 256] are cached and reused. This behavior helps optimize memory usage for commonly used integers.
