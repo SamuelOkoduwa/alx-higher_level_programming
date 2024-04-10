@@ -1,0 +1,28 @@
+# Test cases for text_indentation function
+
+>>> text_indentation("Hello. How are you? I am fine.")
+Hello.$
+$
+How are you?$
+$
+I am fine.$
+
+>>> text_indentation("This is a test: is it working? Great.")
+This is a test:$
+$
+is it working?$
+$
+Great.$
+
+>>> text_indentation("Hello: World. How are you?")
+Hello:$
+$
+World.$
+$
+How are you?$
+
+>>> try:
+...     text_indentation(["This is a list."])
+... except Exception as e:
+...     print(e)
+text must be a string
