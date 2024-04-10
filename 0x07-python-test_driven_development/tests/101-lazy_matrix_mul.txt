@@ -1,0 +1,7 @@
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+# Test case for valid matrix multiplication with 2x2 matrices
+# Expected output: [[7, 10], [15, 22]]
+
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+# Test case for valid matrix multiplication with 1x2 and 2x2 matrices
+# Expected output: [[13, 16]]
